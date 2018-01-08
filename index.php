@@ -27,6 +27,15 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        elseif ($_GET['action'] == 'register') {
+            if (isset($_POST['pseudo']) && isset($_POST['pass']) && isset($_POST['email'])) {
+                register($_POST['pseudo'], $_POST['pass'], $_POST['email'], $_POST['date_inscription']);
+            }
+            else {
+                throw new Exception('Pour vous inscrire, veuillez remplir tous les champs');
+            }
+        }
+
     }
     else {
         listPosts();
