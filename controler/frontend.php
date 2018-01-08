@@ -3,6 +3,7 @@
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
+require_once('model/RegistrationManager.php');
 
 function listPosts()
 {
@@ -35,4 +36,13 @@ function addComment($postId, $author, $comment)
     else {
         header('Location: index.php?action=post&id=' . $postId);
     }
+}
+
+function register($pass)
+{
+    $registrationManager = new \OpenClassrooms\Blog\Model\PostRegistration();
+    $pass_hache = password_hash($pass, PASSWORD_DEFAULT);
+
+    
+    require('view/frontend/registrationView.php');
 }
