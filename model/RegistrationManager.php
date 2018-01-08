@@ -4,14 +4,17 @@ namespace OpenClassrooms\Blog\Model;
 
 require_once("model/Manager.php");
 
-class PostManager extends Manager
+class PostRegistration extends Manager
 {
+
     public function postRegistration()
     {
+        //$pass_hache = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         $db = $this->dbConnect();
+        $req = $bdd->prepare('INSERT INTO membres(pseudo, pass, email, date_inscription) VALUES(?, ?, ?, NOW())');
         $req->execute(array($_POST['pseudo'], $pass_hache, $_POST['email']));
 
-        return $req;
+        
     }
 
 }
