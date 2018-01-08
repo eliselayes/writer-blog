@@ -3,6 +3,7 @@
 <?php ob_start(); ?>
 <h1>Mon super blog !</h1>
 <p><a href="index.php?action=register">S'inscrire</a></p>
+<p><a href="index.php?action=connect">Se connecter</a></p>
 
 <p>Derniers billets du blog :</p>
 
