@@ -35,6 +35,12 @@ try {
                 throw new Exception('Pour vous inscrire, veuillez remplir tous les champs');
             }
         }
+        elseif ($_GET['action'] == 'login') {
+            if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
+            {
+                echo 'Bonjour ' . $_SESSION['pseudo'];
+            }
+        }
 
     }
     else {
