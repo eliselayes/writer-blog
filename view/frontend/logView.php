@@ -5,7 +5,7 @@
 <p><a href="index.php">Retour à la liste des billets</a></p>
 
 
-<form action="connexion_post.php" method="post">
+<form action="index.php?action=login" method="post">
     <p>
     <label for="pseudo">Pseudo :</label><input type="text" name="pseudo" id="pseudo" /><br />
     <label for="pass">Mot de passe :</label><input type="text" name="pass" id="pass" /><br />
