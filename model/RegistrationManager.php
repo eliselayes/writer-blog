@@ -4,7 +4,7 @@ namespace OpenClassrooms\Blog\Model;
 
 require_once("model/Manager.php");
 
-class PostRegistration extends Manager
+class RegistrationManager extends Manager
 {
 
     public function postRegistration()
