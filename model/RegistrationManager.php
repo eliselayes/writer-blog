@@ -11,7 +11,7 @@ class RegistrationManager extends Manager
     {
         //$pass_hache = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         $db = $this->dbConnect();
-        $req = $bdd->prepare('INSERT INTO membres(pseudo, pass, email, date_inscription) VALUES(?, ?, ?, NOW())');
+        $req = $db->prepare('INSERT INTO membres(pseudo, pass, email, date_inscription) VALUES(?, ?, ?, NOW())');
         $req->execute(array($_POST['pseudo'], $pass_hache, $_POST['email']));
 
         
