@@ -4,6 +4,7 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/RegistrationManager.php');
+require_once('model/LogManager.php');
 
 function listPosts()
 {
@@ -47,9 +48,20 @@ function register($pass)
     require('view/frontend/registrationView.php');
 }
 
-function login()
+function login($pass)
 {
     $logManager = new \OpenClassrooms\Blog\Model\LogManager();
+    $pass_hache = password_hash($pass, PASSWORD_DEFAULT);
+
+    if (!$resultat) {
+        echo 'Mauvais identifiant ou mot de passe !';
+    }
+    else {
+        session_start();
+        $_SESSION['id'] = $resultat['id'];
+        $_SESSION['pseudo'] = $pseudo;
+        echo 'Vous êtes connecté !';
+    }
 
     require('view/frontend/logView.php');
 }
