@@ -39,10 +39,12 @@ function addComment($postId, $author, $comment)
     }
 }
 
-function register($pass)
+function register($pseudo, $pass, $email)
 {
     $registrationManager = new \OpenClassrooms\Blog\Model\RegistrationManager();
-    $pass_hache = password_hash($pass, PASSWORD_DEFAULT);
+    //$pass_hache = password_hash($pass, PASSWORD_DEFAULT);
+
+    $registrationManager->postRegistration($pseudo, $pass, $email);
 
     
     require('view/frontend/registrationView.php');
