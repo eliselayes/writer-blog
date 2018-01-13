@@ -8,7 +8,7 @@ class LogManager extends Manager
 {
     
 
-    public function login()
+    public function login($pseudo, $pass_hache)
     {
         $db = $this->dbConnect();
         $comments = $db->prepare('SELECT id FROM membres WHERE pseudo = ? AND pass = ?');
