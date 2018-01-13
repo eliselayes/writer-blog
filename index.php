@@ -28,17 +28,20 @@ try {
             }
         }
         elseif ($_GET['action'] == 'register') {
-            if (isset($_POST['pseudo']) && isset($_POST['pass']) && isset($_POST['email'])) {
-                register($_POST['pseudo'], $_POST['pass'], $_POST['email'], $_POST['date_inscription']);
-            }
+            //if (isset($_POST['pseudo']) && isset($_POST['pass']) && isset($_POST['email'])) {
+                register($_POST['pseudo'], $_POST['pass'], $_POST['email']);
+            /*}
             else {
                 throw new Exception('Pour vous inscrire, veuillez remplir tous les champs');
-            }
+            }*/
         }
         elseif ($_GET['action'] == 'login') {
             if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
             {
                 echo 'Bonjour ' . $_SESSION['pseudo'];
+            }
+            else {
+                throw new Exception('test');
             }
         }
 
