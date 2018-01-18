@@ -1,27 +1,149 @@
-h1, h3
-{
-    text-align:center;
-}
-h3
-{
-    background-color:black;
-    color:white;
-    font-size:0.9em;
-    margin-bottom:0px;
-}
-.news p
-{
-    background-color:#CCCCCC;
-    margin-top:0px;
-}
-.news
-{
-    width:70%;
-    margin:auto;
-}
+/*
+ * Globals
+ */
 
-a
-{
-    text-decoration: none;
-    color: blue;
-}
+ body {
+    font-family: 'ABeeZee', sans-serif;
+  
+    color: #555;
+    background-image:url(../images/pattern.png);
+    background-repeat: repeat;
+  }
+  
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
+    margin-top: 0;
+    font-family: 'ABeeZee', sans-serif;
+    font-weight: normal;
+    color: #333;
+  }
+  
+  
+  /*
+   * Override Bootstrap's default container.
+   */
+  
+  @media (min-width: 1200px) {
+    .container {
+      width: 970px;
+    }
+  }
+  
+  
+  /*
+   * Blog name and description
+   */
+  
+  .blog-header {
+    background-image:url(../images/alaska.jpg);
+    margin-top: 100px;
+    margin-bottom: 50px;
+    padding: 40px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 12px #555;
+  }
+  .blog-title {
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-size: 50px;
+    font-weight: normal;
+    color: #f5f5f5;
+    text-shadow: 2px 2px 2px black;
+  }
+  .blog-description {
+    font-size: 20px;
+    color: #f5f5f5;
+    text-shadow: 2px 2px 2px black;
+  }
+  
+  
+  /*
+   * Main column and sidebar layout
+   */
+  
+  .blog-main {
+    font-size: 18px;
+    line-height: 1.5;
+    background-color: #f5f5f5;
+    padding: 40px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 12px #555;
+  }
+  
+  /* Sidebar modules for boxing content */
+  .sidebar-module {
+    padding: 15px;
+    margin: 0 -15px 15px;
+    background-color: #f5f5f5;
+    box-shadow: 1px 1px 12px #555;
+  }
+  .sidebar-module-inset {
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 2px;
+  }
+  .sidebar-module-inset p:last-child,
+  .sidebar-module-inset ul:last-child,
+  .sidebar-module-inset ol:last-child {
+    margin-bottom: 0;
+  }
+  
+  .sidebar-module-inset img {
+      width: 50%;
+      margin-bottom: 10px;
+  }
+  
+  
+  /* Pagination */
+  .pager {
+    margin-bottom: 60px;
+    text-align: center;
+  }
+  .pager > li > a {
+    width: 140px;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 30px;
+  }
+  
+  
+  /*
+   * Blog posts
+   */
+  
+  .blog-post {
+    margin-bottom: 60px;
+  }
+  .blog-post-title {
+    margin-bottom: 5px;
+    font-size: 40px;
+  }
+  .blog-post-meta {
+    margin-bottom: 20px;
+    color: #999;
+  }
+  
+  
+  /*
+   * Footer
+   */
+  
+  .blog-footer {
+    padding: 20px 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e5e5e5;
+  }
+  .blog-footer p:last-child {
+    margin-bottom: 0;
+  }
+
+
+
+
+  
