@@ -1,10 +1,12 @@
 <?php
 
 // Chargement des classes
+
 require_once('model/PostManager.php');
-require_once('model/CommentManager.php');
-require_once('model/RegistrationManager.php');
 require_once('model/LogManager.php');
+
+
+
 
 function listPosts()
 {
@@ -14,56 +16,37 @@ function listPosts()
     require('view/frontend/listPostsView.php');
 }
 
-function post()
+/*function post()
 {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
-    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
 
     $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
-
     require('view/frontend/postView.php');
-}
+}*/
 
-function addComment($postId, $author, $comment)
+function sendText($content)
 {
-    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $postManager->sendText($content);
 
-    $affectedLines = $commentManager->postComment($postId, $author, $comment);
-
-    if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
-    }
-    else {
-        header('Location: index.php?action=post&id=' . $postId);
-    }
+    require('view/frontend/tinymceView.php');
 }
 
-function register($pseudo, $pass, $email)
-{
-    $registrationManager = new \OpenClassrooms\Blog\Model\RegistrationManager();
-    //$pass_hache = password_hash($pass, PASSWORD_DEFAULT);
-
-    $registrationManager->postRegistration($pseudo, $pass, $email);
-
-    
-    require('view/frontend/registrationView.php');
-}
-
-function login($pass)
+function login($pseudo, $pass)
 {
     $logManager = new \OpenClassrooms\Blog\Model\LogManager();
-    $pass_hache = password_hash($pass, PASSWORD_DEFAULT);
-
-    if (!$resultat) {
-        echo 'Mauvais identifiant ou mot de passe !';
-    }
-    else {
-        session_start();
-        $_SESSION['id'] = $resultat['id'];
-        $_SESSION['pseudo'] = $pseudo;
-        echo 'Vous êtes connecté !';
-    }
+    $logManager->login($pseudo, $pass);
 
     require('view/frontend/logView.php');
 }
+
+function displayLogin()
+{
+    require('view/frontend/logView.php');
+}
+
+function displaySendText()
+{
+    require('view/frontend/tinymceView.php');
+}
+
