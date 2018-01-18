@@ -28,6 +28,7 @@ function sendText($content)
 {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
     $postManager->sendText($content);
+    echo '<script>alert("Votre texte a bien été envoyé");</script>';
 
     require('view/frontend/tinymceView.php');
 }
