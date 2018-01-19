@@ -26,8 +26,9 @@
               <?= $data['creation_date_fr'] ?>
             </p>
             <p>
-              <?= nl2br(htmlspecialchars($data['content'])) ?>
+              <?= nl2br(htmlspecialchars($data['short_content'])) ?>
             </p>
+            <a href="#">  lire la suite... </a>
           </div>
           <?php
         }
