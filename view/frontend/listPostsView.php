@@ -28,7 +28,7 @@
             <p>
               <?= nl2br(htmlspecialchars($data['short_content'])) ?>
             </p>
-            <a href="#">  lire la suite... </a>
+            <a href="index.php?action=seeOnePost&amp;id=<?= $data['id'] ?>">  lire la suite... </a>
           </div>
           <?php
         }
@@ -79,9 +79,7 @@
 
 
     <footer class="blog-footer">
-      <p>
-        <a href="#">Haut de la page</a>
-      </p>
+      <p><a href="#">Haut de la page</a></p>
       <p><a href="index.php?action=login">Accès auteur</a></p>
     </footer>
 
