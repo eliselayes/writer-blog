@@ -16,13 +16,13 @@ function listPosts()
     require('view/frontend/listPostsView.php');
 }
 
-/*function post()
+function seeOnePost($content)
 {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
 
-    $post = $postManager->getPost($_GET['id']);
+    $post = $postManager->getPost($content);
     require('view/frontend/postView.php');
-}*/
+}
 
 function sendText($content)
 {
