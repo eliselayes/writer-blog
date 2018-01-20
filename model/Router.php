@@ -19,14 +19,12 @@ class Router
                         displayLogin();
                     }
                 }
-                /*elseif ($_GET['action'] == 'post') {
-                    if (isset($_GET['id']) && $_GET['id'] > 0) {
-                        post();
-                    }
-                    else {
-                        throw new Exception('Aucun identifiant de billet envoyé');
-                    }
-                }*/
+                elseif ($_GET['action'] == 'seeOnePost') {
+                    //if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        seeOnePost($_GET['id']);
+                    //}
+                    
+                }
                 elseif ($_GET['action'] == 'sendText') {
                     if(!empty($_POST['content'])) {
                         sendText($_POST['content']);
