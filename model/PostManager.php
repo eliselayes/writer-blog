@@ -17,7 +17,7 @@ class PostManager extends Manager
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT content, DATE_FORMAT(date_creation, \'%d/%m/%Y\') AS creation_date_fr FROM posts WHERE id = ?');
-        $req->execute(array($_GET['id']));
+        $req->execute(array($postId));
         $post = $req->fetch();
 
         return $post;
