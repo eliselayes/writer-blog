@@ -26,10 +26,14 @@
               <?= $data['creation_date_fr'] ?>
             </p>
             <p>
-              <?= nl2br(htmlspecialchars($data['short_content'])) ?>
+              <?= //nl2br(htmlspecialchars($data['short_content']))
+              $data['short_content'] 
+              
+              ?>
             </p>
             <a href="index.php?action=seeOnePost&amp;id=<?= $data['id'] ?>">  lire la suite... </a>
           </div>
+ 
           <?php
         }
         $posts->closeCursor();
@@ -40,6 +44,7 @@
               <li><a href="#">Suivant</a></li>
             </ul>
           </nav>
+          
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module sidebar-module-inset">
