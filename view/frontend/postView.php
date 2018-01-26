@@ -16,52 +16,44 @@
 
         <div class="col-sm-8 blog-main">
         
-
-            <div class="blog-post">
+          <div class="blog-post">
             <p class="blog-post-meta">
-                <?= $post['creation_date_fr'] ?>
+              <?= $post['creation_date_fr'] ?>
             </p>
             <p>
-                <?= $post['content'] ?>
+                <?= html_entity_decode($post['content']) ?>
             </p>
+          </div> <!-- blog-post -->
+
+          <h2>Commentaires</h2>
+            
+          <form action="index.php?action=addComment&amp;id=<?= $_GET['id'] ?>" method="post">
+            <div>
+              <label for="author">Auteur</label><br />
+                <input type="text" id="author" name="author" />
             </div>
-
-            <h2>Commentaires</h2>
-            
-            <form action="index.php?action=addComment&amp;id=<?= $_GET['id'] ?>" method="post">
-                <div>
-                    <label for="author">Auteur</label><br />
-                    <input type="text" id="author" name="author" />
-                </div>
-                <div>
-                    <label for="comment">Commentaire</label><br />
-                    <textarea id="comment" name="comment"></textarea>
-                </div>
-                <div>
-                    <input type="submit" />
-                </div>
-            </form>
+            <div>
+              <label for="comment">Commentaire</label><br />
+              <textarea id="comment" name="comment"></textarea>
+            </div>
+            <div>
+                <input type="submit" />
+            </div>
+          </form>
 
 
-<?php
+          <?php
+          while ($comment = $comments->fetch()) {
+          ?>
 
-while ($comment = $comments->fetch())
-{
-?>
-    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-<?php
-}
-?>
+              <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+              <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
 
-
-
-            
-        
-      </div>
-
-        
-       
+          <?php
+          }
+          ?>
+          
+        </div> <!-- blog-main --> 
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module sidebar-module-inset">
