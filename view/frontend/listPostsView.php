@@ -26,8 +26,7 @@
               <?= $data['creation_date_fr'] ?>
             </p>
             <p>
-              <?= //nl2br(htmlspecialchars($data['short_content']))
-              $data['short_content'] 
+              <?= html_entity_decode($data['short_content']); 
               
               ?>
             </p>
