@@ -6,6 +6,8 @@ require_once("model/Manager.php");
 
 class PostManager extends Manager
 {
+    //private $db = $this->dbConnect();
+
     public function getPosts()
     {
         $db = $this->dbConnect();
@@ -16,7 +18,7 @@ class PostManager extends Manager
     public function getPost($postId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT content, DATE_FORMAT(date_creation, \'%d/%m/%Y\') AS creation_date_fr FROM posts WHERE id = ?');
+        $req = $db->prepare('SELECT id, content, DATE_FORMAT(date_creation, \'%d/%m/%Y\') AS creation_date_fr FROM posts WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
 
@@ -29,4 +31,19 @@ class PostManager extends Manager
         $posts = $db->prepare('INSERT INTO posts(content, date_creation) VALUES(?, NOW())');
         $posts->execute(array($content));
     }
+
+
+
+    /*public function nbPagesCount()
+    {
+        $postsPerPage = 5;
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(*) AS total FROM posts');
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+        $totalPosts = $data['total'];
+        $totalPages = ceil($totalPosts/$postsPerPage);
+
+        return $totalPages;
+    }*/
+
 }
