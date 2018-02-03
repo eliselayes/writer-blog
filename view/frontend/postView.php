@@ -46,13 +46,16 @@
           while ($comment = $comments->fetch()) {
           ?>
 
-              <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-              <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+            <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+            <form action="index.php?action=report&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>" method="post">
+              <div> <input type="submit" value="signaler"/></div>
+            </form>
 
           <?php
           }
           ?>
-          
+
         </div> <!-- blog-main --> 
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
@@ -100,4 +103,4 @@
 
     <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('./view/template.php'); ?>
