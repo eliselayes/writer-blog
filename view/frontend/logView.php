@@ -1,4 +1,4 @@
-<?php $title = 'Mon blog'; ?>
+<?php $title = 'Se connecter'; ?>
 
 <?php ob_start(); ?>
 <div class="container">
@@ -16,7 +16,7 @@
             <h2>Connexion</h2>
             <p><a href="index.php">Retour à l'accueil du blog</a></p>
 
-            <form class="log" action="index.php?action=sendText" method="post">
+            <form class="log" action="index.php?action=mainBackend" method="post">
                 <label for="pseudo">Pseudo :</label><input type="text" name="pseudo" id="pseudo" /><br />
                 <label for="pass">Mot de passe :</label><input type="text" name="pass" id="pass" /><br />
                 
@@ -30,4 +30,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('./view/template.php'); ?>
