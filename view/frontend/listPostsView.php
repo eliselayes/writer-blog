@@ -26,9 +26,7 @@
               <?= $data['creation_date_fr'] ?>
             </p>
             <p>
-              <?= html_entity_decode($data['short_content']); 
-              
-              ?>
+              <?= html_entity_decode($data['short_content']); ?>
             </p>
             <a href="index.php?action=seeOnePost&amp;id=<?= $data['id'] ?>">  lire la suite... </a>
           </div>
@@ -37,11 +35,18 @@
         }
         $posts->closeCursor();
         ?>
-          <nav>
-            <ul class="pager">
-              <li><a href="#">Précédent</a></li>
-              <li><a href="#">Suivant</a></li>
-            </ul>
+
+          <nav class="pager">
+          <?php
+          for($i = 1; $i <= $totalPages; $i++) {
+            if($i==$currentPage) {
+              echo " $i /";
+            }
+            else { ?>
+              <a href="index.php?action=listPosts&amp;p=<?=$i?>"><?$i?></a>
+            <?php }
+          }
+          ?>
           </nav>
           
         </div>
@@ -95,4 +100,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('./view/template.php'); ?>
