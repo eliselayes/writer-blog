@@ -23,23 +23,26 @@ class Frontend extends Manager
         $this->_commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
     }
 
-    public function listPosts()
+    public function listPosts1()
     {
+        //$currentPage = 1;
         $posts = $this->_postManager->getPosts();
+        //$totalpages = $this->_postManager->nbpagesCount();
         require('view/frontend/listPostsView.php');
+
+        //return $totalpages;
     }
 
-
-    public function login($pseudo, $pass)
+    /*public function listPostsOtherPages()
     {
-        $this->_logManager->login($pseudo, $pass);
-        require('view/frontend/logView.php');
-    }
+        $currentPage = $_GET['p'];
+        $posts = $this->_postManager->getPosts();
+        //$totalpages = $this->_postManager->nbpagesCount();
+        require('view/frontend/listPostsView.php');
 
-    public function displayLogin()
-    {
-        require('view/frontend/logView.php');
-    }
+        return $totalpages;
+    }*/
+
 
 
 
@@ -51,19 +54,6 @@ class Frontend extends Manager
         require('view/frontend/postView.php');
     }
 
-
-    public function sendText($content)
-    {
-        $this->_postManager->sendText($content);
-        echo '<script>alert("Votre texte a bien été envoyé");</script>';
-
-        require('view/frontend/tinymceView.php');
-    }
-
-    public function displaySendText()
-    {
-        require('view/frontend/tinymceView.php');
-    }
 
 
 
@@ -83,4 +73,18 @@ class Frontend extends Manager
     {
         require('view/frontend/logView.php');
     }
+
+
+
+    public function addReport($id, $postId)
+    {
+        $this->_commentManager->reportComment($id);
+        echo '<script>alert("Le commentaire a bien été signalé");</script>';
+
+        $post = $this->_postManager->getPost($postId);
+        $comments = $this->_commentManager->getComments($postId);
+
+        require('view/frontend/postView.php');
+    }
+
 }
