@@ -33,6 +33,17 @@
     <![endif]-->
   </head>
 
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 blog-header">
+            <a class="blog-title" href="index.php"><h1>Le blog de Billet simple pour l'Alaska</h1>
+            <p class="lead blog-description">Roman-feuilleton</p> </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <body>
     <?= $content ?>
 
