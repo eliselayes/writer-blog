@@ -2,24 +2,19 @@
 
 <?php ob_start(); ?>
 <div class="container">
+    
     <div class="row">
-
-        <div class="col-sm-12 blog-header">
-            <h1 class="blog-title">Le blog de Billet simple pour l'Alaska</h1>
-            <p class="lead blog-description">Roman-feuilleton</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-5 col-sm-offset-4">
-            <p><a href="index.php">Retour à l'accueil du blog</a></p>
-
-            <form class="log" action="index.php?action=sendText" method="post">
-                <input type="submit" value="Rédiger mes épisodes" />
-            </form>
-            <form class="report" action="index.php?action=seeReports" method="post">
-                <input type="submit" value="Consulter les commentaires signalés" />
-            </form>
-            
+        <div class="col-sm-12" id="mainBackend">
+            <div id="selectFlex">
+                <div>
+                    <div class="select select1"><a href="index.php?action=sendText">Rédiger mes épisodes</a></div>
+                    <div class="select select2"><a href="index.php?action=seeReports">Commentaires signalés</a></div>
+                </div>
+                <div>
+                    <div class="select select3"><a href="index.php?action=changePW">Changer le mot de passe</a></div>
+                    <div class="select select4"><a href="index.php?action=editText">Gérer les articles</a></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
