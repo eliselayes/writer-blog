@@ -6,33 +6,22 @@ require_once("model/Manager.php");
 
 class LogManager extends Manager
 {
-    public function login($pseudo, $pass)
-    {
-        // Verification des identifiants
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id FROM authors WHERE pseudo = :pseudo AND pass = :pass');
-        $req->execute(array(
-            'pseudo' => $pseudo,
-            'pass' => $pass));
-        
-        $resultat = $req->fetch();
-        
-        if (!$resultat)
-        {
-            echo 'Mauvais identifiant ou mot de passe !';
-        }
-        else
-        {
-            session_start();
-            $_SESSION['id'] = $resultat['id'];
-            $_SESSION['pseudo'] = $pseudo;
-            echo 'Vous êtes connecté !';
-        }
+    public function login() {
+        $sql = 'SELECT id FROM authors WHERE pseudo = ? AND pass = ?';
+        $req = $this->executeRequest($sql, array($pseudo, $pass));
+        $result = $req->fetch();
+    }
 
+    public function getPass() {
+        $sql = 'SELECT pass FROM authors WHERE pseudo = "jean"';
+        $req = $this->executeRequest($sql, array());
+        $donnees = $req->fetch();
+    }
 
-        if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
-        {
-            echo 'Bonjour ' . $_SESSION['pseudo'];
-        }
+    public function changePW($pass) {
+        $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
+        $sql = 'UPDATE authors SET pass = ? WHERE pseudo = "jean"';
+        $req = $this->executeRequest($sql, array($pass_hash));
+        $newPW = $req->fetch();
     }
 }
