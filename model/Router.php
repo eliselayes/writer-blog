@@ -16,24 +16,44 @@ class Router
 
             
             if (isset($_GET['action'])) { 
-                if($_GET['action']== 'listPosts') {
-                    if(isset($_GET['p']) && $_GET['p']<=$totalPages) {
-                        $controler_frontend->listPostsOtherPages();
+                
+                if($_GET['action']== 'changePage') {
+                    if(isset($_GET['page'])) {
+                        $controler_frontend->changePage($_GET['page']);
                     }
                 }
                 elseif ($_GET['action'] == 'login') {
-                    if(!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
+                    /*if(!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
                         $controler_backend->login($_POST['pseudo'], $_POST['pass']);
                     }
+                    else {*/
+                        $controler_backend->displayLogin();
+                    //}
+                }
+                elseif ($_GET['action'] == 'mainBackend') {
+                    if (!empty($_POST['pass']) && !empty($_POST['pseudo'])) {
+                        if ($_POST['pseudo'] == "jean" /*&& password_verify($_POST['pass'], $_GET['pass'])*/)  {
+                        $controler_backend->mainBackend(/*$_GET['pass']*/);
+                        }
+                        else {
+                            echo '<script>alert("Ce n\'est pas le bon pseudo ou mot de passe");</script>';
+                            $controler_backend->displayLogin();
+                        }
+                    }
                     else {
+                        echo '<script>alert("Vous n\'avez pas rempli tous les champs");</script>';
                         $controler_backend->displayLogin();
                     }
                 }
                 elseif ($_GET['action'] == 'seeOnePost') {
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
                         $controler_frontend->seeOnePost($_GET['id']);
+                    }     
+                }
+                elseif ($_GET['action'] == 'seePostsPerMonth') {
+                    if (isset($_GET['m'])) {
+                        $controler_frontend->seePostsPerMonth($_GET['m']);
                     }
-                    
                 }
                 elseif ($_GET['action'] == 'sendText') {
                     if(!empty($_POST['content'])) {
@@ -56,25 +76,60 @@ class Router
                         throw new Exception('Aucun identifiant de billet envoyé');
                     }
                 }
-                elseif ($_GET['action'] == 'mainBackend') {
-                    $controler_backend->mainBackend();
+                
+                elseif ($_GET['action'] == 'changePW') {
+                    if(!empty($_POST['pass'])) {
+                        $controler_backend->changePW($_POST['pass']);
+                    }
+                    else {
+                        $controler_backend->displayChangePW();
+                    }
                 }
                 elseif ($_GET['action'] == 'report') {
-                    $controler_frontend->addReport($_GET['id'], $_GET['postId']);
+                    //if(isset($_GET['id']) && $_GET['id'] > 0 && ($_GET['postId']) && $_GET['postId'] > 0) {
+                        $controler_frontend->addReport($_GET['id'], $_GET['postId']);
+                    //}
                 }
                 elseif ($_GET['action'] == 'seeReports') {
                     $controler_backend->seeReports();
                 }
-
                 elseif ($_GET['action'] == 'keepComment') {
-                    $controler_backend->keepComment($_GET['id']);
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        $controler_backend->keepComment($_GET['id']);
+                    }
                 }
                 elseif ($_GET['action'] == 'deleteComment') {
-                    $controler_backend->deleteComment($_GET['id']);
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        $controler_backend->deleteComment($_GET['id']);
+                    }
                 }
+                elseif ($_GET['action'] == 'editText') {
+                    $controler_backend->listPostsEdit(1);
+                }
+                elseif ($_GET['action'] == 'changePageBack') {
+                    if(isset($_GET['page'])) {
+                        $controler_backend->changePageBack($_GET['page']);
+                    }
+                }
+                elseif ($_GET['action'] == 'deletePost') {
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        $controler_backend->deletePost($_GET['id'], 1);
+                    }
+                }
+                elseif ($_GET['action'] == 'displayPostToBeUpd') {
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        $controler_backend->displayPostToBeUpd($_GET['id']);
+                    }
+                }
+                elseif ($_GET['action'] == 'modifyPost') {
+                    //if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        $controler_backend->modifyPost($_POST['content'], $_GET['id']);
+                    //}
+                }
+                  
             }
             else {
-                $controler_frontend->listPosts1();
+            $controler_frontend->listPosts1(1);
             }
         }
         catch(Exception $e) {
