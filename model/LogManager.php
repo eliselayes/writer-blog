@@ -15,7 +15,8 @@ class LogManager extends Manager
     public function getPass() {
         $sql = 'SELECT pass FROM authors WHERE pseudo = "jean"';
         $req = $this->executeRequest($sql, array());
-        $donnees = $req->fetch();
+        $pass = $req->fetch();
+        return $pass['pass'];
     }
 
     public function changePW($pass) {
