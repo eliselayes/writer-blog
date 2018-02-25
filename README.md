@@ -4,7 +4,7 @@ Blog without CMS with PHP and MySQL.
 Project to learn PHP and MySQL to have a diploma in web development (OpenClassrooms).
 Realised between decembre 2017 and february 2018.
 
-Actually (21/02/2018) almost finished.
+25/02/2018 : functionnal.
 
 
 ## the project
