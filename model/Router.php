@@ -23,22 +23,11 @@ class Router
                     }
                 }
                 elseif ($_GET['action'] == 'login') {
-                    /*if(!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
-                        $controler_backend->login($_POST['pseudo'], $_POST['pass']);
-                    }
-                    else {*/
                         $controler_backend->displayLogin();
-                    //}
                 }
                 elseif ($_GET['action'] == 'mainBackend') {
                     if (!empty($_POST['pass']) && !empty($_POST['pseudo'])) {
-                        if ($_POST['pseudo'] == "jean" /*&& password_verify($_POST['pass'], $_GET['pass'])*/)  {
-                        $controler_backend->mainBackend(/*$_GET['pass']*/);
-                        }
-                        else {
-                            echo '<script>alert("Ce n\'est pas le bon pseudo ou mot de passe");</script>';
-                            $controler_backend->displayLogin();
-                        }
+                        $controler_backend->mainBackend($_POST['pseudo'], $_POST['pass']);
                     }
                     else {
                         echo '<script>alert("Vous n\'avez pas rempli tous les champs");</script>';
@@ -86,9 +75,9 @@ class Router
                     }
                 }
                 elseif ($_GET['action'] == 'report') {
-                    //if(isset($_GET['id']) && $_GET['id'] > 0 && ($_GET['postId']) && $_GET['postId'] > 0) {
+                    if(isset($_GET['id']) && $_GET['id'] > 0 && ($_GET['postId']) && $_GET['postId'] > 0) {
                         $controler_frontend->addReport($_GET['id'], $_GET['postId']);
-                    //}
+                    }
                 }
                 elseif ($_GET['action'] == 'seeReports') {
                     $controler_backend->seeReports();
@@ -122,9 +111,9 @@ class Router
                     }
                 }
                 elseif ($_GET['action'] == 'modifyPost') {
-                    //if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
                         $controler_backend->modifyPost($_POST['content'], $_GET['id']);
-                    //}
+                    }
                 }
                   
             }
