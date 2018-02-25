@@ -1,4 +1,4 @@
-<?php $title = 'Page principale backend'; ?>
+<?php $title = 'Liste des articles signalés'; ?>
 
 <?php ob_start(); ?>
 <div class="container">
