@@ -65,7 +65,7 @@ class PostManager extends Manager {
     }
 
     public function getPostsPerMonth($m) {
-        $sql = 'SELECT id, SUBSTRING(content, 1, 150) AS short_content, DATE_FORMAT(date_creation, \'%d/%m/%Y\') AS creation_date_fr FROM posts WHERE MONTH(date_creation) = ?';
+        $sql = 'SELECT id, SUBSTRING(content, 1, 150) AS short_content, DATE_FORMAT(date_creation, \'%d/%m/%Y\') AS creation_date_fr FROM posts WHERE MONTH(date_creation) = ? ORDER BY id DESC';
         $postsPerMonth = $this->executeRequest($sql, array($m));
         return $postsPerMonth;
     }
