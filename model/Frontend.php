@@ -35,9 +35,9 @@ class Frontend extends Manager {
         require('view/frontend/listPostsView.php');
     }
 
-    public function seeOnePost($content) {
-        $post = $this->_postManager->getPost($content);
-        $comments = $this->_commentManager->getComments($content);
+    public function seeOnePost($postId) {
+        $post = $this->_postManager->getPost($postId);
+        $comments = $this->_commentManager->getComments($postId);
         $months = $this->_postManager->getMonths();
         require('view/frontend/postView.php');
     }
