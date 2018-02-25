@@ -44,9 +44,16 @@ class Backend extends Manager {
 
 
 
-    public function mainBackend() {
-        $donnees = $this->_logManager->getPass();
-        require('view/backend/mainBackendView.php');
+    public function mainBackend($pseudo, $pass) {
+        $hash = $this->_logManager->getPass();
+        if ($pseudo == "jean" && password_verify($pass, $hash))  {
+            require('view/backend/mainBackendView.php');
+        }
+        else {
+            echo '<script>alert("Ce n\'est pas le bon pseudo ou mot de passe");</script>';
+            require('view/frontend/logView.php');
+        }
+        
     }
 
 
@@ -109,7 +116,7 @@ class Backend extends Manager {
     public function modifyPost($content, $id) {
         $postToBeMod = $this->_postManager->modifyPost($content, $id);
         echo '<script>alert("L\'article a bien été modifié");</script>';
-        $post = $this->_postManager->getPost($content);
+        $post = $this->_postManager->getPost($id);
         require('view/backend/mceUpdateView.php');
     }
 
