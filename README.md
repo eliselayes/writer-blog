@@ -18,6 +18,8 @@ Can edit the text with the WYSWIYG HTML editor TinyMCE.
 * PHP 5.6 or newer
 * MySQL
 
+Use the SQL file in the repository.
+
 
 
 
